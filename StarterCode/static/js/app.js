@@ -40,17 +40,18 @@ var layout = {
 };
 
 // Render the plot to the div tag with 
-Plotly.newPlot('plot', data, layout);
+Plotly.newPlot('bar', data, layout);
 
 //Part 3: Create a bubble chart that displays each sample
 var trace1 = {
-  x: reversedData.map(object => object.sample_values),
-  y: reversedData.map(object => object.otu_ids),
+  x: reversedData.map(object => object.otu_ids),
+  y: reversedData.map(object => object.sample_values),
   mode: 'markers',
   marker: {
-    color: ['rgb(93, 164, 214)', 'rgb(280, 144, 20)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+    colors: [otu_ids]
     opacity: [0.4],
-    size: [60]
+    size: [sample_values]
+    text values: [otu_labels]
   }
 };
 
@@ -63,9 +64,34 @@ var layout = {
   width: 600
 };
 
-Plotly.newPlot('myDiv', data, layout);
+Plotly.newPlot('bubble', data, layout);
 
 // Part 4: Display the sample metadata 
+function optionChanged(value) {
+  //run chart for selected data with d3;
+  metadata = Data.metadata.filter
+
+  plotObject = Data.samples.filter
+
+  sorttableData = plotObject.otu_ids.map((obj, index))
+     {
+      return {
+          otu_id: obj,
+          sample_value: plotObject.sample_values
+          [index]
 
 
 //Part 5 (advanced) Plot Washing Frequency 
+var Data = [
+  {
+    domain: { x: [0, 1], y: [0, 1] },
+    title: { text: "Washing Frequency" },
+    type: "indicator",
+    mode: "gauge+number",
+    delta: { reference: 4 },
+    gauge: { axis: { range: [null, 9] } }
+  }
+];
+
+var layout = { width: 600, height: 400 };
+Plotly.newPlot('gauge', data, layout);
