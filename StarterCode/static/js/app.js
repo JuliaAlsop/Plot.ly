@@ -40,10 +40,32 @@ var layout = {
 };
 
 // Render the plot to the div tag with 
-Plotly.newPlot("plot", data, layout);
+Plotly.newPlot('plot', data, layout);
 
 //Part 3: Create a bubble chart that displays each sample
+var trace1 = {
+  x: reversedData.map(object => object.sample_values),
+  y: reversedData.map(object => object.otu_ids),
+  mode: 'markers',
+  marker: {
+    color: ['rgb(93, 164, 214)', 'rgb(280, 144, 20)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+    opacity: [0.4],
+    size: [60]
+  }
+};
+
+var data = [trace1];
+
+var layout = {
+  title: 'Bubble Chart',
+  showlegend: false,
+  height: 600,
+  width: 600
+};
+
+Plotly.newPlot('myDiv', data, layout);
 
 // Part 4: Display the sample metadata 
+
 
 //Part 5 (advanced) Plot Washing Frequency 
