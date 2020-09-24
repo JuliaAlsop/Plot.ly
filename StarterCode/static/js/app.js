@@ -1,14 +1,13 @@
 // Fetch the JSON data and console log it
-d3.json("../samples.json").then(function(data) {
-    console.log("d3.json ran")
-    console.log(data);
-
-    mydata = data
+d3.json("data/samples.json").then((importedData) => {
+    console.log("importedData");
+    var data = importedData;
 
 //Build your select dropdown based on contents for 
-    data.names
+    var data = Object.values(data.names);
+
 //Filter the demographic info based on the select
-    
+    var labels = Object.keys(data.names);
 })
 
 // Promise Pending
@@ -17,12 +16,21 @@ d3.json("../samples.json").then(function(data) {
 
 // Create a horizontal bar chart with dropdown menu to display top 10 
 // OTUs found in that individual 
-
-
-
-
-
-
+function init() {
+    var data = [{
+      values: us,
+      labels: labels,
+      type: "pie"
+    }];
+  
+    var layout = {
+      height: 600,
+      width: 800
+    };
+  
+    Plotly.newPlot("pie", data, layout);
+  }
+  
 function optionChanged(value) {
     //run chart for selected data with d3;
     metadata = mydata.metadata.filter(/* Find element with matching 
